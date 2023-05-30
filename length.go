@@ -58,3 +58,23 @@ func removeMoreThanTwoFromSequence(s, seq string) string {
 
 	return string(runes)
 }
+
+func getReversedString(s string) string {
+	n := 0
+	rune := make([]rune, len(s))
+
+	for _, r := range s {
+		rune[n] = r
+		n++
+	}
+
+	rune = rune[0:n]
+
+	// reverse
+	for i := 0; i < n/2; i++ {
+		rune[i], rune[n-1-i] = rune[n-1-i], rune[i]
+	}
+
+	// convert back to UTF-8
+	return string(rune)
+}
