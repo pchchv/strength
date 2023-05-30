@@ -28,3 +28,33 @@ func removeMoreThanTwoRepeatingChars(s string) string {
 
 	return string(runes)
 }
+
+func removeMoreThanTwoFromSequence(s, seq string) string {
+	seqRunes := []rune(seq)
+	runes := []rune(s)
+	matches := 0
+	for i := 0; i < len(runes); i++ {
+		for j := 0; j < len(seqRunes); j++ {
+			if i >= len(runes) {
+				break
+			}
+
+			r := runes[i]
+			r2 := seqRunes[j]
+			if r != r2 {
+				matches = 0
+				continue
+			}
+
+			// found a match, advance the counter
+			matches++
+			if matches > 2 {
+				runes = deleteRuneAt(runes, i)
+			} else {
+				i++
+			}
+		}
+	}
+
+	return string(runes)
+}
