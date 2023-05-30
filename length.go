@@ -1,5 +1,13 @@
 package strength
 
+const (
+	seqNums      = "0123456789"
+	seqKeyboard0 = "qwertyuiop"
+	seqKeyboard1 = "asdfghjkl"
+	seqKeyboard2 = "zxcvbnm"
+	seqAlphabet  = "abcdefghijklmnopqrstuvwxyz"
+)
+
 func deleteRuneAt(runes []rune, i int) []rune {
 	if i >= len(runes) || i < 0 {
 		return runes
@@ -77,4 +85,20 @@ func getReversedString(s string) string {
 
 	// convert back to UTF-8
 	return string(rune)
+}
+
+func getLength(password string) int {
+	password = removeMoreThanTwoRepeatingChars(password)
+	password = removeMoreThanTwoFromSequence(password, seqNums)
+	password = removeMoreThanTwoFromSequence(password, seqKeyboard0)
+	password = removeMoreThanTwoFromSequence(password, seqKeyboard1)
+	password = removeMoreThanTwoFromSequence(password, seqKeyboard2)
+	password = removeMoreThanTwoFromSequence(password, seqAlphabet)
+	password = removeMoreThanTwoFromSequence(password, getReversedString(seqNums))
+	password = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard0))
+	password = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard1))
+	password = removeMoreThanTwoFromSequence(password, getReversedString(seqKeyboard2))
+	password = removeMoreThanTwoFromSequence(password, getReversedString(seqAlphabet))
+
+	return len(password)
 }
