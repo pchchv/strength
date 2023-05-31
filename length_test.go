@@ -67,3 +67,35 @@ func TestGetReversedString(t *testing.T) {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 }
+
+func TestGetLength(t *testing.T) {
+	actual := getLength("aaaa")
+	expected := 2
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getLength("11112222")
+	expected = 4
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getLength("aa123456")
+	expected = 4
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getLength("876543")
+	expected = 2
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getLength("qwerty123456z")
+	expected = 5
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+}
