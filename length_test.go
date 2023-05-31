@@ -27,3 +27,29 @@ func TestRemoveMoreThanTwoFromSequence(t *testing.T) {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 }
+
+func TestRemoveRepeatingChars(t *testing.T) {
+	actual := removeMoreThanTwoRepeatingChars("aaaa")
+	expected := "aa"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = removeMoreThanTwoRepeatingChars("bbbbbbbaaaaaaaaa")
+	expected = "bbaa"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = removeMoreThanTwoRepeatingChars("ab")
+	expected = "ab"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = removeMoreThanTwoRepeatingChars("")
+	expected = ""
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+}
