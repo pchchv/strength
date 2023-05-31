@@ -3,6 +3,29 @@
 
 ![XKCD Passwords](https://imgs.xkcd.com/comics/password_strength.png)
 
+## Usage
+
+```go
+package main
+
+import (
+    "github.com/pchchv/strength"
+)
+
+func main(){
+    const minEntropyBits = 60
+
+    // entropy is a float64, representing the strength in base 2 (bits)
+    entropy := strength.GetEntropy("a longer password")
+
+    // if the password has sufficient entropy, err is nil,
+    // otherwise a formatted error message is given explaining
+    // how to increase the strength of the password
+    // (safe to show to the client)
+    err := strength.Validate("password", minEntropyBits)
+}
+```
+
 ## What Entropy Value Should I Use?
 
 ![entropy](https://external-preview.redd.it/rhdADIZYXJM2FxqNf6UOFqU5ar0VX3fayLFpKspN8uI.png?auto=webp&s=9c142ebb37ed4c39fb6268c1e4f6dc529dcb4282)
