@@ -2,6 +2,11 @@ package strength
 
 import "math"
 
+// GetEntropy returns entropy in bits for a given password.
+func GetEntropy(password string) float64 {
+	return getEntropy(password)
+}
+
 func logX(base, n float64) float64 {
 	if base == 0 {
 		return 0
