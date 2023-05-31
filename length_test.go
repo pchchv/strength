@@ -53,3 +53,17 @@ func TestRemoveRepeatingChars(t *testing.T) {
 		t.Errorf("Wanted %v, got %v", expected, actual)
 	}
 }
+
+func TestGetReversedString(t *testing.T) {
+	actual := getReversedString("abcd")
+	expected := "dcba"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+
+	actual = getReversedString("1234")
+	expected = "4321"
+	if actual != expected {
+		t.Errorf("Wanted %v, got %v", expected, actual)
+	}
+}
